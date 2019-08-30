@@ -201,7 +201,6 @@ public class MainActivity extends AppCompatActivity {
                         String[] resulttx = resulttext.split(",");
 
                         for (int i = 0 ;i < resulttx.length ; i++){
-                            imagetotextlist.add()
                         }
 
                         Log.d(TAG, "onCreate: "+text.getText());
