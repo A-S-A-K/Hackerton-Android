@@ -18,24 +18,30 @@
             android:layout_marginTop="10dp"
             android:orientation="vertical" >
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:padding="5dp"
+            <TextView
                 android:gravity="center"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="300dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_weight="1" />
-
-            </LinearLayout>
+                android:text="물질 이름"
+                android:textSize="48dp"
+                android:textStyle="bold"
+                android:textColor="#ff0000"
+                android:id="@+id/tv_chemical"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1" />
+            <TextView
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textSize="36dp"
+                android:textColor="#000000"
+                android:text="사용하기에\n 위험한 제품이에요!"
+                android:id="@+id/tv_chemical1"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -45,6 +51,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:gravity="center"
                     android:id="@+id/textView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -60,6 +67,7 @@
                     android:textColor="#000000" />
 
                 <TextView
+                    android:gravity="center"
                     android:id="@+id/textView2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -72,98 +80,142 @@
                     android:paddingTop="5dp"
                     android:paddingRight="5dp"
                     android:paddingBottom="5dp"
-                    android:text="해당 상품의 구매자들이 선호하는 상품"
+                    android:text="유사한 위험군을 갖고있는 제품 (성분)"
                     android:textColor="#000000"
                     android:textSize="15dp"
                     android:textStyle="bold" />
 
                 <HorizontalScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="200dp" >
+                    android:layout_height="230dp" >
 
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:orientation="horizontal" >
 
                         <LinearLayout
                             android:layout_width="200dp"
                             android:layout_height="match_parent"
-                            android:background="#ff0000"
+                            android:background="#ffffff"
                             android:orientation="vertical">
 
                             <ImageView
+                                android:layout_marginTop="8dp"
                                 android:id="@+id/unsafe_iv_1"
                                 android:layout_width="150dp"
                                 android:layout_height="150dp"
                                 android:layout_gravity="center" />
 
                             <TextView
+                                android:gravity="center"
+                                android:textColor="#000000"
                                 android:id="@+id/unsafe_tv_1"
                                 android:layout_width="150dp"
                                 android:layout_height="10dp"
                                 android:layout_weight="1"
                                 android:layout_gravity="center"
                                 android:text="상품 이름 1"/>
+                            <TextView
+                                android:layout_marginTop="8dp"
+                                android:gravity="center"
+                                android:textColor="#000000"
+                                android:id="@+id/unsafe_chmical_tv_1"
+                                android:layout_width="150dp"
+                                android:layout_height="10dp"
+                                android:layout_weight="1"
+                                android:layout_gravity="center"
+                                android:text="성분 이름 1"/>
+
 
                         </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="200dp"
                             android:layout_height="match_parent"
-                            android:background="#00ff00"
+                            android:background="#ffffff"
                             android:orientation="vertical">
 
                             <ImageView
+                                android:layout_marginTop="8dp"
                                 android:id="@+id/unsafe_iv_2"
                                 android:layout_width="150dp"
                                 android:layout_height="150dp"
                                 android:layout_gravity="center" />
 
                             <TextView
+                                android:gravity="center"
+                                android:textColor="#000000"
                                 android:id="@+id/unsafe_tv_2"
                                 android:layout_width="150dp"
                                 android:layout_height="10dp"
                                 android:layout_weight="1"
                                 android:layout_gravity="center"
                                 android:text="상품 이름 2"/>
+
+                            <TextView
+                                android:layout_marginTop="8dp"
+                                android:gravity="center"
+                                android:textColor="#000000"
+                                android:id="@+id/unsafe_chmical_tv_2"
+                                android:layout_width="150dp"
+                                android:layout_height="10dp"
+                                android:layout_weight="1"
+                                android:layout_gravity="center"
+                                android:text="성분 이름 2"/>
                         </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="200dp"
                             android:layout_height="match_parent"
-                            android:background="#0000ff"
+                            android:background="#ffffff"
                             android:orientation="vertical">
 
                             <ImageView
+                                android:layout_marginTop="8dp"
                                 android:id="@+id/unsafe_iv_3"
                                 android:layout_width="150dp"
                                 android:layout_height="150dp"
                                 android:layout_gravity="center" />
 
                             <TextView
+                                android:gravity="center"
+                                android:textColor="#000000"
                                 android:id="@+id/unsafe_tv_3"
                                 android:layout_width="150dp"
                                 android:layout_height="10dp"
                                 android:layout_weight="1"
                                 android:layout_gravity="center"
                                 android:text="상품 이름 3"/>
+                            <TextView
+                                android:layout_marginTop="8dp"
+                                android:gravity="center"
+                                android:textColor="#000000"
+                                android:id="@+id/unsafe_chmical_tv_3"
+                                android:layout_width="150dp"
+                                android:layout_height="10dp"
+                                android:layout_weight="1"
+                                android:layout_gravity="center"
+                                android:text="성분 이름 3"/>
 
                         </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="200dp"
                             android:layout_height="match_parent"
-                            android:background="#ff0000"
+                            android:background="#ffffff"
                             android:orientation="vertical">
 
                             <ImageView
+                                android:layout_marginTop="8dp"
                                 android:id="@+id/unsafe_iv_4"
                                 android:layout_width="150dp"
                                 android:layout_height="150dp"
                                 android:layout_gravity="center" />
 
                             <TextView
+                                android:gravity="center"
+                                android:textColor="#000000"
                                 android:id="@+id/unsafe_tv_4"
                                 android:layout_width="150dp"
                                 android:layout_height="10dp"
@@ -171,27 +223,51 @@
                                 android:layout_gravity="center"
                                 android:text="상품 이름 4"/>
 
+                            <TextView
+                                android:layout_marginTop="8dp"
+                                android:gravity="center"
+                                android:textColor="#000000"
+                                android:id="@+id/unsafe_chmical_tv_4"
+                                android:layout_width="150dp"
+                                android:layout_height="10dp"
+                                android:layout_weight="1"
+                                android:layout_gravity="center"
+                                android:text="성분 이름 4"/>
+
                         </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="200dp"
                             android:layout_height="match_parent"
-                            android:background="#00ff00"
+                            android:background="#ffffff"
                             android:orientation="vertical">
 
                             <ImageView
+                                android:layout_marginTop="8dp"
                                 android:id="@+id/unsafe_iv_5"
                                 android:layout_width="150dp"
                                 android:layout_height="150dp"
                                 android:layout_gravity="center" />
 
                             <TextView
+                                android:gravity="center"
+                                android:textColor="#000000"
                                 android:id="@+id/unsafe_tv_5"
                                 android:layout_width="150dp"
                                 android:layout_height="10dp"
                                 android:layout_weight="1"
                                 android:layout_gravity="center"
                                 android:text="상품 이름 5"/>
+                            <TextView
+                                android:layout_marginTop="8dp"
+                                android:gravity="center"
+                                android:textColor="#000000"
+                                android:id="@+id/unsafe_chmical_tv_5"
+                                android:layout_width="150dp"
+                                android:layout_height="10dp"
+                                android:layout_weight="1"
+                                android:layout_gravity="center"
+                                android:text="성분 이름 5"/>
 
                         </LinearLayout>
 

@@ -32,6 +32,7 @@ public class UnSafeActivity extends AppCompatActivity {
     ImageView iv_1, iv_2, iv_3, iv_4, iv_5;
     TextView tv_1, tv_2, tv_3, tv_4, tv_5;
 
+    private static final String TAG = "UnSafeActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -96,13 +97,16 @@ public class UnSafeActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 try {
-                    if (response.isSuccessful()){
-
+                    if(response.isSuccessful()){
                         String returnData2 = response.body().string();
                         Log.d("UnsafeAc return 값-2", returnData2);
 
-                    }else {
-                        Log.d(TAG, "onResponse:error ");
+
+                    }else{
+                        Log.d(TAG, "onResponse 2: "+ chemicalData);
+                        String url = String.valueOf(response.raw().request().url());
+                        //요청 url 로그로 받아오는 코드
+                        Log.d(TAG, "onResponse url: "+ url);
                     }
                     randomMatchingItem();
                 } catch (IOException e) {
@@ -166,29 +170,29 @@ public class UnSafeActivity extends AppCompatActivity {
             productList_num.add(num);
 
             if(i == 0){
-                Glide.with(this).load(Uri.parse("http://13.124.22.195/"+productList_num.get(num)+".jpg"))
+                Glide.with(this).load(Uri.parse("http://13.124.22.195/hackerton/"+productList_num.get(i)+".jpg"))
                         .into(iv_1);
-                tv_1.setText(productList_num.get(num-1));
+                tv_1.setText(productList_text.get(productList_num.get(i)-1));
                 //text 고정
             }else if(i==1){
-                Glide.with(this).load(Uri.parse("http://13.124.22.195/"+productList_num.get(num)+".jpg"))
+                Glide.with(this).load(Uri.parse("http://13.124.22.195/hackerton/"+productList_num.get(i)+".jpg"))
                         .into(iv_2);
-                tv_2.setText(productList_num.get(num-1));
+                tv_2.setText(productList_text.get(productList_num.get(i)-1));
 
             }else if(i==2){
-                Glide.with(this).load(Uri.parse("http://13.124.22.195/"+productList_num.get(num)+".jpg"))
+                Glide.with(this).load(Uri.parse("http://13.124.22.195/hackerton/"+productList_num.get(i)+".jpg"))
                         .into(iv_3);
-                tv_2.setText(productList_num.get(num-1));
+                tv_3.setText(productList_text.get(productList_num.get(i)-1));
 
             }else if(i==3){
-                Glide.with(this).load(Uri.parse("http://13.124.22.195/"+productList_num.get(num)+".jpg"))
+                Glide.with(this).load(Uri.parse("http://13.124.22.195/hackerton/"+productList_num.get(i)+".jpg"))
                         .into(iv_4);
-                tv_3.setText(productList_num.get(num-1));
+                tv_4.setText(productList_text.get(productList_num.get(i)-1));
 
             }else {
-                Glide.with(this).load(Uri.parse("http://13.124.22.195/"+productList_num.get(num)+".jpg"))
+                Glide.with(this).load(Uri.parse("http://13.124.22.195/hackerton/"+productList_num.get(i)+".jpg"))
                         .into(iv_5);
-                tv_4.setText(productList_num.get(num-1));
+                tv_5.setText(productList_text.get(productList_num.get(i)-1));
 
             }
 
