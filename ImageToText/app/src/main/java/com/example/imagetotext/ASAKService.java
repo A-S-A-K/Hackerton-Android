@@ -11,7 +11,7 @@ import retrofit2.http.Query;
 
 public interface ASAKService {
 
-    String API_URL="http://13.124.22.195/hackerton/";
+    String API_URL="";
 
     @FormUrlEncoded
     @POST("chemical_data.php")
