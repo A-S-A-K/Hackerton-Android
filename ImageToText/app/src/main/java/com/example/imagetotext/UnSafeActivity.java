@@ -10,6 +10,9 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
@@ -30,7 +33,8 @@ public class UnSafeActivity extends AppCompatActivity {
     ArrayList<String> productList_text;
     ArrayList<Integer> productList_num;
     ImageView iv_1, iv_2, iv_3, iv_4, iv_5;
-    TextView tv_1, tv_2, tv_3, tv_4, tv_5;
+    TextView tv_1, tv_2, tv_3, tv_4, tv_5, tv_danger;
+    JSONArray marray;
 
     private static final String TAG = "UnSafeActivity";
     @Override
@@ -54,6 +58,8 @@ public class UnSafeActivity extends AppCompatActivity {
         tv_4 = findViewById(R.id.unsafe_tv_4);
         tv_5 = findViewById(R.id.unsafe_tv_5);
 
+        tv_danger = findViewById(R.id.tv_danger_chemic);
+
         RetrofitData1();
     }
 
@@ -71,8 +77,13 @@ public class UnSafeActivity extends AppCompatActivity {
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 try {
                     String returnData = response.body().string();
+                    marray =  new JSONArray(returnData);
+                    tv_danger.setText(marray.get(0).toString()+"," + marray.get(1).toString()+"," + marray.get(2).toString());
+
                     Log.d("UnsafeAc return 값-1", returnData);
                 } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
