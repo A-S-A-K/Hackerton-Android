@@ -17,9 +17,9 @@ public interface ASAKService {
     @POST("chemical_data.php")
     Call<ResponseBody> sendChemical(@Field("result") String result);
 
-
-    @GET(":5000")
-    Call<ResponseBody> sendChemical2(@Query("result") String result);
+    @FormUrlEncoded
+    @POST(" ")
+    Call<ResponseBody> sendChemical2(@Field("result") String result);
 
 
 
