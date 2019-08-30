@@ -98,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
     ProgressDialog progressDialog;
 
     private static final int KOREAN_TEXT =11;
+    private static final int ERROR =12;
     Bitmap image; //사용되는 이미지
     String datapath = "" ; //언어데이터가 있는 경로
 
@@ -110,6 +111,11 @@ public class MainActivity extends AppCompatActivity {
             switch (msg.what){
                 case KOREAN_TEXT :
                     mResultEt.setText(resulttext);
+                    progressDialog.dismiss();
+                    break;
+
+                case ERROR :
+                    mResultEt.setText("텍스트 인식 실패");
                     progressDialog.dismiss();
                     break;
             }
@@ -126,26 +132,25 @@ public class MainActivity extends AppCompatActivity {
         chemicalist = new ArrayList<>();
         chemicalparse();
 
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("이 성분 안전한가요?");
+
         mResultEt = findViewById(R.id.resultET);
         mPreviewIv = findViewById(R.id.imageView);
-        kobt = findViewById(R.id.ko_bt);
         sendbt = findViewById(R.id.send_bt);
         //camera permission
         cameraPermission = new String[]{Manifest.permission.CAMERA,
             Manifest.permission.WRITE_EXTERNAL_STORAGE};
         storagePermission = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE};
 
-        kobt.setOnClickListener(new View.OnClickListener() {
+       /* kobt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                progressDialog = new ProgressDialog(MainActivity.this);
-                progressDialog.setTitle("글자 인식 중");
-                progressDialog.setMessage("이미지에서 글자 인식 중 입니다.");
-                progressDialog.show();
                 processImage();
+
             }
-        });
+        });*/
 
         sendbt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -165,8 +170,18 @@ public class MainActivity extends AppCompatActivity {
                 for (int i = 0 ; i < comparedlist.size() ; i++){
                     result = result + comparedlist.get(i);
                 }
+                Log.d(TAG, "onClick: "+result);
 
+                if (result.equals("")){
+                    Intent safeintent = new Intent(MainActivity.this, SafeActivity.class);
+                    startActivity(safeintent);
+                }else {
+                    Intent unsafeintent = new Intent(MainActivity.this, UnSafeActivity.class);
+                    unsafeintent.putExtra("result",result);
+                    startActivity(unsafeintent);
+                }
                 mResultEt.setText(result);
+
             }
         });
     }
@@ -253,6 +268,7 @@ public class MainActivity extends AppCompatActivity {
                     request.setImageContext(context);
                     request.setFeatures(Arrays.asList(desiredFeature));
 
+                    Log.d(TAG, "run:set ");
 
                     BatchAnnotateImagesRequest batchRequest =
                             new BatchAnnotateImagesRequest();
@@ -286,12 +302,17 @@ public class MainActivity extends AppCompatActivity {
                         }
 
                     } catch (IOException e) {
+                        Log.d(TAG, "run:error "+e.getMessage());
                         e.printStackTrace();
                     }
 
                 // More code here
             }catch (Exception e){
                     e.printStackTrace();
+                    Log.d(TAG, "run:erroror "+e.getMessage());
+                    Message message = handler.obtainMessage();
+                    message.what = ERROR;
+                    handler.sendMessage(message);
                 }
         }});
     }
@@ -480,7 +501,11 @@ public class MainActivity extends AppCompatActivity {
                     }
                     Log.d(TAG, "onActivityResult:결과 텍스트"+sb.toString());
                     //인식된 텍스트를 사용자에게 보여줌
-                    mResultEt.setText(sb.toString());
+                    progressDialog = new ProgressDialog(MainActivity.this);
+                    progressDialog.setTitle("글자 인식 중");
+                    progressDialog.setMessage("이미지에서 글자 인식 중 입니다.");
+                    progressDialog.show();
+                    processImage();
                 }
             }else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE){
                 //크롭중에 에러가 있다면

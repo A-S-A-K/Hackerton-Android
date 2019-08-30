@@ -42,15 +42,6 @@
                         android:textSize="20dp" />
 
                         <Button
-                            android:id="@+id/ko_bt"
-                            android:layout_marginLeft="15dp"
-                            android:textColor="#ffffff"
-                            android:text="한글 인식"
-                            android:background="@color/colorPrimary"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-
-                        <Button
                             android:id="@+id/send_bt"
                             android:layout_marginLeft="15dp"
                             android:textColor="#ffffff"
@@ -95,9 +86,10 @@
                         android:textSize="20dp" />
                     <!-- 이미지 나옴 -->
                     <ImageView
+                        android:scaleType="center"
                         android:id="@+id/imageView"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="250dp"
                         android:maxHeight="250dp" />
                 </LinearLayout>
             </android.support.v7.widget.CardView>
