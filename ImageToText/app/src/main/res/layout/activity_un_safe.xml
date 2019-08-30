@@ -124,6 +124,7 @@
                                 android:layout_gravity="center" />
 
                             <TextView
+                                android:textSize="16dp"
                                 android:gravity="center"
                                 android:textColor="#000000"
                                 android:id="@+id/unsafe_tv_1"
@@ -133,7 +134,8 @@
                                 android:layout_gravity="center"
                                 android:text="상품 이름 1"/>
                             <TextView
-                                android:layout_marginTop="8dp"
+                                android:textSize="18dp"
+                                android:textStyle="bold"
                                 android:gravity="center"
                                 android:textColor="#000000"
                                 android:id="@+id/unsafe_chmical_tv_1"
@@ -160,6 +162,8 @@
                                 android:layout_gravity="center" />
 
                             <TextView
+
+                                android:textSize="16dp"
                                 android:gravity="center"
                                 android:textColor="#000000"
                                 android:id="@+id/unsafe_tv_2"
@@ -170,7 +174,8 @@
                                 android:text="상품 이름 2"/>
 
                             <TextView
-                                android:layout_marginTop="8dp"
+                                android:textSize="18dp"
+                                android:textStyle="bold"
                                 android:gravity="center"
                                 android:textColor="#000000"
                                 android:id="@+id/unsafe_chmical_tv_2"
@@ -195,6 +200,7 @@
                                 android:layout_gravity="center" />
 
                             <TextView
+                                android:textSize="16dp"
                                 android:gravity="center"
                                 android:textColor="#000000"
                                 android:id="@+id/unsafe_tv_3"
@@ -204,7 +210,8 @@
                                 android:layout_gravity="center"
                                 android:text="상품 이름 3"/>
                             <TextView
-                                android:layout_marginTop="8dp"
+                                android:textSize="18dp"
+                                android:textStyle="bold"
                                 android:gravity="center"
                                 android:textColor="#000000"
                                 android:id="@+id/unsafe_chmical_tv_3"
@@ -230,6 +237,8 @@
                                 android:layout_gravity="center" />
 
                             <TextView
+
+                                android:textSize="16dp"
                                 android:gravity="center"
                                 android:textColor="#000000"
                                 android:id="@+id/unsafe_tv_4"
@@ -240,7 +249,9 @@
                                 android:text="상품 이름 4"/>
 
                             <TextView
-                                android:layout_marginTop="8dp"
+
+                                android:textSize="18dp"
+                                android:textStyle="bold"
                                 android:gravity="center"
                                 android:textColor="#000000"
                                 android:id="@+id/unsafe_chmical_tv_4"
@@ -266,6 +277,8 @@
                                 android:layout_gravity="center" />
 
                             <TextView
+
+                                android:textSize="16dp"
                                 android:gravity="center"
                                 android:textColor="#000000"
                                 android:id="@+id/unsafe_tv_5"
@@ -275,7 +288,9 @@
                                 android:layout_gravity="center"
                                 android:text="상품 이름 5"/>
                             <TextView
-                                android:layout_marginTop="8dp"
+
+                                android:textSize="18dp"
+                                android:textStyle="bold"
                                 android:gravity="center"
                                 android:textColor="#000000"
                                 android:id="@+id/unsafe_chmical_tv_5"
