@@ -24,9 +24,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class UnSafeActivity extends AppCompatActivity {
 
     String chemicalData;
-    Retrofit retrofit;
-    ASAKService asakService;
-
+    Retrofit retrofit, jisuretrofit;
+    ASAKService asakService, jisuService;
+    private static final String TAG = "UnSafeActivity";
     ArrayList<String> productList_text;
     ArrayList<Integer> productList_num;
     ImageView iv_1, iv_2, iv_3, iv_4, iv_5;
@@ -84,20 +84,26 @@ public class UnSafeActivity extends AppCompatActivity {
         });
 
         //지수씨 서버로 보내는 코드.. 인공지능 5개 추출
-        retrofit = new Retrofit.Builder().baseUrl("192.168.1.8:5000")
+        jisuretrofit = new Retrofit.Builder().baseUrl("http://192.168.1.8:5000/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        asakService = retrofit.create(ASAKService.class);
+        jisuService = jisuretrofit.create(ASAKService.class);
+        Log.d("ss", "RetrofitData1: "+chemicalData);
 
-        Call<ResponseBody> sendChemical2 = asakService.sendChemical2(chemicalData);
+        Call<ResponseBody> sendChemical2 = jisuService.sendChemical2(chemicalData);
         sendChemical2.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 try {
-                    String returnData2 = response.body().string();
-                    Log.d("UnsafeAc return 값-2", returnData2);
+                    if (response.isSuccessful()){
 
+                        String returnData2 = response.body().string();
+                        Log.d("UnsafeAc return 값-2", returnData2);
+
+                    }else {
+                        Log.d(TAG, "onResponse:error ");
+                    }
                     randomMatchingItem();
                 } catch (IOException e) {
                     e.printStackTrace();
