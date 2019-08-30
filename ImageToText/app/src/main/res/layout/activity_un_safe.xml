@@ -51,6 +51,8 @@
                 android:orientation="vertical">
 
                 <TextView
+
+                    android:textSize="24dp"
                     android:gravity="center"
                     android:id="@+id/tv_danger_chemic"
                     android:layout_width="match_parent"
@@ -86,6 +88,7 @@
                     android:textStyle="bold" />
 
                 <HorizontalScrollView
+                    android:layout_marginBottom="16dp"
                     android:layout_width="match_parent"
                     android:layout_height="230dp" >
 

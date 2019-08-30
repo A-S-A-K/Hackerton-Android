@@ -33,10 +33,9 @@ public class UnSafeActivity extends AppCompatActivity {
     ArrayList<String> productList_text;
     ArrayList<Integer> productList_num;
     ImageView iv_1, iv_2, iv_3, iv_4, iv_5;
-    TextView tv_1, tv_2, tv_3, tv_4, tv_5, tv_danger;
+    TextView tv_1, tv_2, tv_3, tv_4, tv_5, tv_danger, tv_chemical, unsafe_1,unsafe_2,unsafe_3,unsafe_4,unsafe_5;
     JSONArray marray;
 
-    private static final String TAG = "UnSafeActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +58,14 @@ public class UnSafeActivity extends AppCompatActivity {
         tv_5 = findViewById(R.id.unsafe_tv_5);
 
         tv_danger = findViewById(R.id.tv_danger_chemic);
+        tv_chemical = findViewById(R.id.tv_chemical);
+
+        unsafe_1 = findViewById(R.id.unsafe_chmical_tv_1);
+        unsafe_2 = findViewById(R.id.unsafe_chmical_tv_2);
+        unsafe_3 = findViewById(R.id.unsafe_chmical_tv_3);
+        unsafe_4 = findViewById(R.id.unsafe_chmical_tv_4);
+        unsafe_5 = findViewById(R.id.unsafe_chmical_tv_5);
+
 
         RetrofitData1();
     }
@@ -78,7 +85,9 @@ public class UnSafeActivity extends AppCompatActivity {
                 try {
                     String returnData = response.body().string();
                     marray =  new JSONArray(returnData);
-                    tv_danger.setText(marray.get(0).toString()+"," + marray.get(1).toString()+"," + marray.get(2).toString());
+                    tv_danger.setText("위험 물질\n" + marray.get(1).toString()+", " + marray.get(2).toString()+", " + marray.get(3).toString());
+
+                    tv_chemical.setText(chemicalData);
 
                     Log.d("UnsafeAc return 값-1", returnData);
                 } catch (IOException e) {
@@ -111,7 +120,13 @@ public class UnSafeActivity extends AppCompatActivity {
                     if(response.isSuccessful()){
                         String returnData2 = response.body().string();
                         Log.d("UnsafeAc return 값-2", returnData2);
+                        String[] k = returnData2.split("|");
 
+                        unsafe_1.setText(k[0]);
+                        unsafe_2.setText(k[1]);
+                        unsafe_3.setText(k[2]);
+                        unsafe_4.setText(k[3]);
+                        unsafe_5.setText(k[4]);
 
                     }else{
                         Log.d(TAG, "onResponse 2: "+ chemicalData);
