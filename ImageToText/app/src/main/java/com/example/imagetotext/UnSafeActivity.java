@@ -85,7 +85,7 @@ public class UnSafeActivity extends AppCompatActivity {
                 try {
                     String returnData = response.body().string();
                     marray =  new JSONArray(returnData);
-                    tv_danger.setText("위험 물질\n" + marray.get(1).toString()+", " + marray.get(2).toString()+", " + marray.get(3).toString());
+                    tv_danger.setText(marray.get(1).toString()+", " + marray.get(2).toString()+", " + marray.get(3).toString());
 
                     tv_chemical.setText(chemicalData);
 
@@ -120,7 +120,7 @@ public class UnSafeActivity extends AppCompatActivity {
                     if(response.isSuccessful()){
                         String returnData2 = response.body().string();
                         Log.d("UnsafeAc return 값-2", returnData2);
-                        String[] k = returnData2.split("|");
+                        String[] k = returnData2.split("\\|");
 
                         unsafe_1.setText(k[0]);
                         unsafe_2.setText(k[1]);
