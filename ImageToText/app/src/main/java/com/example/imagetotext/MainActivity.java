@@ -462,7 +462,7 @@ public class MainActivity extends AppCompatActivity {
                 image = bitmap;
 
                 TextRecognizer recognizer = new TextRecognizer.Builder(getApplicationContext()).build();
-                
+
                 if (!recognizer.isOperational()){
                     Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
                 }else {
