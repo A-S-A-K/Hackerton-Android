@@ -67,7 +67,14 @@ public class MainActivity extends AppCompatActivity {
     EditText mResultEt;
     ImageView mPreviewIv;
     Button kobt;
-
+/*
+    해야할 것.
+    1.인식된 한글을 구분자로 나눈다.
+    2.나눈 한글을 리스트에 담는다.
+    3.json성분파일을 리스트에 담는다.
+    4.인식된 성분 리스트와 json 성분을 비교한다.
+    
+*/
     private static final int CAMERA_REQUEST_CODE = 200;
     private static final int STORAGE_REQUEST_CODE = 400;
     private static final int IMAGE_PICK_GALLERY_CODE = 1000;
