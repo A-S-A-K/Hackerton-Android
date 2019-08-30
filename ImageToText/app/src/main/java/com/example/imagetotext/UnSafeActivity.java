@@ -32,7 +32,6 @@ public class UnSafeActivity extends AppCompatActivity {
     ImageView iv_1, iv_2, iv_3, iv_4, iv_5;
     TextView tv_1, tv_2, tv_3, tv_4, tv_5;
 
-    private static final String TAG = "UnSafeActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
