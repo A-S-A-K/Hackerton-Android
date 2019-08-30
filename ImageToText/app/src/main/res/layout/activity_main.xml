@@ -49,6 +49,15 @@
                             android:background="@color/colorPrimary"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
+
+                        <Button
+                            android:id="@+id/send_bt"
+                            android:layout_marginLeft="15dp"
+                            android:textColor="#ffffff"
+                            android:text="분석 요청"
+                            android:background="@color/colorPrimary"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
                     </LinearLayout>
 
                     <!--스캔된 텍스트가 나옴-->

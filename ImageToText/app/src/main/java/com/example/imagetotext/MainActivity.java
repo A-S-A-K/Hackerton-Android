@@ -20,6 +20,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.CharacterPickerDialog;
 import android.util.Log;
 import android.util.SparseArray;
 import android.view.Menu;
@@ -66,14 +67,15 @@ public class MainActivity extends AppCompatActivity {
 
     EditText mResultEt;
     ImageView mPreviewIv;
-    Button kobt;
-/*
+    Button kobt, sendbt;
+    String resulttext;
+    /*
     해야할 것.
     1.인식된 한글을 구분자로 나눈다.
     2.나눈 한글을 리스트에 담는다.
     3.json성분파일을 리스트에 담는다.
     4.인식된 성분 리스트와 json 성분을 비교한다.
-    
+
 */
     private static final int CAMERA_REQUEST_CODE = 200;
     private static final int STORAGE_REQUEST_CODE = 400;
@@ -82,6 +84,8 @@ public class MainActivity extends AppCompatActivity {
 
     String cameraPermission[];
     String storagePermission[];
+
+    ArrayList<String> chemicalist, imagetotextlist;
 
     Uri image_uri;
 
@@ -95,10 +99,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        chemicalist = new ArrayList<>();
+        imagetotextlist = new ArrayList<>();
 
         mResultEt = findViewById(R.id.resultET);
         mPreviewIv = findViewById(R.id.imageView);
         kobt = findViewById(R.id.ko_bt);
+        sendbt = findViewById(R.id.send_bt);
         //camera permission
         cameraPermission = new String[]{Manifest.permission.CAMERA,
             Manifest.permission.WRITE_EXTERNAL_STORAGE};
@@ -111,6 +118,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        sendbt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     //Process an Image
@@ -179,7 +192,18 @@ public class MainActivity extends AppCompatActivity {
                                 .get(0).getFullTextAnnotation();
 
 
-                        String resulttext = text.getText();
+                        resulttext = text.getText();
+                        resulttext = resulttext.replace(" ",",");
+                        resulttext = resulttext.replace("\n",",");
+                        resulttext = resulttext.replace("(",",");
+                        resulttext = resulttext.replace(")",",");
+
+                        String[] resulttx = resulttext.split(",");
+
+                        for (int i = 0 ;i < resulttx.length ; i++){
+                            imagetotextlist.add()
+                        }
+
                         Log.d(TAG, "onCreate: "+text.getText());
                     } catch (IOException e) {
                         e.printStackTrace();
@@ -193,47 +217,6 @@ public class MainActivity extends AppCompatActivity {
                 }
         }});
     }
-
-
-    //copy file to device
-    private void copyFiles() {
-        try{
-            String filepath = datapath + "/tessdata/kor.traineddata";
-            AssetManager assetManager = getAssets();
-            InputStream instream = assetManager.open("tessdata/kor.traineddata");
-            OutputStream outstream = new FileOutputStream(filepath);
-            byte[] buffer = new byte[1024];
-            int read;
-            while ((read = instream.read(buffer)) != -1) {
-                outstream.write(buffer, 0, read);
-            }
-            outstream.flush();
-            outstream.close();
-            instream.close();
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    //check file on the device
-    private void checkFile(File dir) {
-        //디렉토리가 없으면 디렉토리를 만들고 그후에 파일을 카피
-        if(!dir.exists()&& dir.mkdirs()) {
-            copyFiles();
-        }
-        //디렉토리가 있지만 파일이 없으면 파일카피 진행
-        if(dir.exists()) {
-            String datafilepath = datapath+ "/tessdata/kor.traineddata";
-            File datafile = new File(datafilepath);
-            if(!datafile.exists()) {
-                copyFiles();
-            }
-        }
-    }
-
 
     //actionbar menu
     @Override
@@ -258,7 +241,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void showImageImportDialog() {
         //items to display in dialog
-        String[] items = {" Camera", "Gallery"};
+        String[] items = {" Camera", " Gallery"};
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
         //set title
         dialog.setTitle("Select Image");
