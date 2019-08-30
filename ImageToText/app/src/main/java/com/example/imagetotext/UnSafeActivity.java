@@ -104,6 +104,9 @@ public class UnSafeActivity extends AppCompatActivity {
 
                     }else{
                         Log.d(TAG, "onResponse 2: "+ chemicalData);
+                        String url = String.valueOf(response.raw().request().url());
+                        //요청 url 로그로 받아오는 코드
+                        Log.d(TAG, "onResponse url: "+ url);
                     }
                     randomMatchingItem();
                 } catch (IOException e) {
@@ -169,27 +172,27 @@ public class UnSafeActivity extends AppCompatActivity {
             if(i == 0){
                 Glide.with(this).load(Uri.parse("http://13.124.22.195/hackerton/"+productList_num.get(i)+".jpg"))
                         .into(iv_1);
-                tv_1.setText(productList_text.get(productList_num.get(i)));
+                tv_1.setText(productList_text.get(productList_num.get(i)-1));
                 //text 고정
             }else if(i==1){
                 Glide.with(this).load(Uri.parse("http://13.124.22.195/hackerton/"+productList_num.get(i)+".jpg"))
                         .into(iv_2);
-                tv_2.setText(productList_text.get(productList_num.get(i)));
+                tv_2.setText(productList_text.get(productList_num.get(i)-1));
 
             }else if(i==2){
                 Glide.with(this).load(Uri.parse("http://13.124.22.195/hackerton/"+productList_num.get(i)+".jpg"))
                         .into(iv_3);
-                tv_3.setText(productList_text.get(productList_num.get(i)));
+                tv_3.setText(productList_text.get(productList_num.get(i)-1));
 
             }else if(i==3){
                 Glide.with(this).load(Uri.parse("http://13.124.22.195/hackerton/"+productList_num.get(i)+".jpg"))
                         .into(iv_4);
-                tv_4.setText(productList_text.get(productList_num.get(i)));
+                tv_4.setText(productList_text.get(productList_num.get(i)-1));
 
             }else {
                 Glide.with(this).load(Uri.parse("http://13.124.22.195/hackerton/"+productList_num.get(i)+".jpg"))
                         .into(iv_5);
-                tv_5.setText(productList_text.get(productList_num.get(i)));
+                tv_5.setText(productList_text.get(productList_num.get(i)-1));
 
             }
 
