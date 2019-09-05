@@ -229,7 +229,7 @@ public class MainActivity extends AppCompatActivity {
                 null);
 
         visionBuilder.setVisionRequestInitializer(
-                new VisionRequestInitializer("AIzaSyAj3mbLB3PEMU9Et7tbn2uQ6pr8TFfSYk0"));
+                new VisionRequestInitializer("API KEY"));
 
         final Vision vision = visionBuilder.build();
 
